@@ -23,7 +23,7 @@ hyperion.setColor(this.hyperion.COLORS.RED);
 hyperion.setOff();
 ```
 ###Tests
-Eind more examples in /test directory.
+find more examples in /test directory.
 
 Enter you hyperion server connection in package.json, and run some tests!
 ```
