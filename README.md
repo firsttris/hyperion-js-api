@@ -1,12 +1,15 @@
 :collision: lightweight JavaScript interface for [Hyperion](https://github.com/hyperion-project/hyperion)
+
 ###Install
+
 [![npm version](https://badge.fury.io/js/hyperion-js-api.svg)](https://badge.fury.io/js/hyperion-js-api)
 [![Dependency Status](https://david-dm.org/firsttris/hyperion-js-api.svg)](https://david-dm.org/firsttris/hyperion-js-api) 
+
 ```
 npm install hyperion-js-api
 ```
 
-Features:
+###Features
 
 - Control color and brightness of tv backlight.
 
