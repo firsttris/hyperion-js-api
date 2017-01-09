@@ -8,7 +8,7 @@ npm install hyperion-js-api
 
 Features:
 
-- Control color and brightness of tv blacklight.
+- Control color and brightness of tv backlight.
 
 - Switch ambilight on/off. (optional)
 
@@ -25,13 +25,13 @@ hyperion.setOff();
 hyperion.setColor(hyperion.color.rgb(255, 0, 0));
 hyperion.getColor((error, response) => {
 });
-hyperion.setBrightness(this.selectedColor.value());
+hyperion.setBrightness(hyperion.color.value());
 hyperion.getBrightness((error, response) => {
 });
-hyperion.setHue(this.selectedColor.hue());
+hyperion.setHue(hyperion.color.hue());
 hyperion.getHue((error, response) => {
 });
-hyperion.setSaturation(this.selectedColor.saturationv());
+hyperion.setSaturation(hyperion.color.saturationv());
 hyperion.getSaturation((error, response) => {
 });
 ```
