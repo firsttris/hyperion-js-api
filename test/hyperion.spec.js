@@ -13,7 +13,7 @@ describe('Test Hyperion', function () {
 
     describe('Timeout Test', function () {
         before(function () {
-            this.hyperion = new Hyperion(packageJson.hyperion.host, packageJson.hyperion.port);
+            this.hyperion = new Hyperion(packageJson.hyperion.fakeHost, packageJson.hyperion.port);
         });
 
         it('getOn should return Backlight status', function (done) {
