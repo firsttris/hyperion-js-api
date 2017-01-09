@@ -1,7 +1,7 @@
 {
   "name": "hyperion-js-api",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "lightweight JavaScript interface for Hyperion",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/hyperion.spec.js"
@@ -16,7 +16,6 @@
   ],
   "hyperion": {
     "host": "20.1.0.138",
-    "fakeHost": "20.1.0.139",
     "port": "19444"
   },
   "repository": {

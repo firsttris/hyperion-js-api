@@ -11,11 +11,6 @@ class Hyperion {
         this.ambiState = false;
         this.effectState = false;
         this.lightState = false;
-        this.COLORS = {
-            WHITE: this.color.rgb(255, 255, 255),
-            RED: this.color.rgb(255, 0, 0),
-            BLACK: this.color.rgb(0, 0, 0)
-        };
         this.CMD = {
             clearall: {
                 command: "clearall"
@@ -28,7 +23,7 @@ class Hyperion {
             offCommand: {
                 command: "color",
                 priority: 100,
-                color: this.COLORS.BLACK.rgb().round().array()
+                color: this.color.rgb(0, 0, 0).round().array()
             },
             effectCommand: {
                 command: "effect",
@@ -44,31 +39,35 @@ class Hyperion {
     send (command, callback) {
         const client = new net.Socket();
         client.setTimeout(1500);
-        let chunk = "";
+        let response = "";
         client.connect(this.port, this.host, () => {
             const string = JSON.stringify(command) + "\n";
             client.write(string);
         });
         client.on('error', (error) => {
-            callback(error, chunk);
+            callback(error, response);
         });
         client.on('data', (data) => {
-            chunk += data.toString();
+            response += data.toString();
             client.end();
         });
         client.on('end', () => {
-            const object = JSON.parse(chunk);
+            const object = JSON.parse(response);
             if (callback) callback(null, object);
         });
         client.on('timeout', function() {
-            //if (callback) callback("timeout", null);
             client.destroy("timeout");
         });
     }
 
-    setColor (colorObject, callback) {
-        this.CMD.colorCommand.color = colorObject.rgb().round().array();
+    setColor (color, callback) {
+        this.selectedColor = color;
+        this.CMD.colorCommand.color = color.rgb().round().array();
         this.send(this.CMD.colorCommand, callback);
+    }
+
+    getColor (callback) {
+        callback(null, this.selectedColor);
     }
 
     setOn (callback) {

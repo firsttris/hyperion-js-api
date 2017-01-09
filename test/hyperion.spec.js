@@ -7,13 +7,9 @@ const packageJson = JSON.parse(fs.readFileSync(packageJsonPath));
 
 describe('Test Hyperion', function () {
 
-    before(function () {
-        this.hyperion = new Hyperion(packageJson.hyperion.host, packageJson.hyperion.port);
-    });
-
     describe('Timeout Test', function () {
         before(function () {
-            this.hyperion = new Hyperion(packageJson.hyperion.fakeHost, packageJson.hyperion.port);
+            this.hyperion = new Hyperion("191.167.0.1", "1234");
         });
 
         it('getOn should return Backlight status', function (done) {
@@ -24,6 +20,10 @@ describe('Test Hyperion', function () {
                 done();
             });
         });
+    });
+
+    before(function () {
+        this.hyperion = new Hyperion(packageJson.hyperion.host, packageJson.hyperion.port);
     });
 
     it('setOn should switch on', function (done) {
@@ -68,7 +68,8 @@ describe('Test Hyperion', function () {
     });
 
     it('setColor switch to red', function (done) {
-        this.hyperion.setColor(this.hyperion.COLORS.RED, (error, response) => {
+        const red = this.wifi370.color.rgb(255, 0, 0);
+        this.hyperion.setColor(red, (error, response) => {
             assert.equal(error, null);
             assert.equal(response.success, true, "returns true for success");
             done();
@@ -76,16 +77,25 @@ describe('Test Hyperion', function () {
     });
 
     it('setColor switch to white', function (done) {
-        this.hyperion.setColor(this.hyperion.COLORS.WHITE, (error, response) => {
+        const white = this.hyperion.color.rgb(255, 255, 255);
+        this.hyperion.setColor(white, (error, response) => {
             assert.equal(error, null);
             assert.equal(response.success, true, "returns true for success");
             done();
         });
     });
 
+    it('getColor should return color', function (done) {
+        this.hyperion.getColor((error, response) => {
+            assert.equal(error, null);
+            assert.equal(response.color.length, 3, "should be 3");
+            done();
+        });
+    });
+
     it('setBrightness should set brightness', function (done) {
-        const red = this.hyperion.color.rgb(255, 255, 255);
-        this.hyperion.setBrightness(red.value(), (error, response) => {
+        const white = this.hyperion.color.rgb(255, 255, 255);
+        this.hyperion.setBrightness(white.value(), (error, response) => {
             assert.equal(error, null);
             assert.equal(response.success, true, "returns true for success");
             done();
