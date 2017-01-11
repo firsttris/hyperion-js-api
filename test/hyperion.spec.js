@@ -1,3 +1,4 @@
+"use strict";
 const assert = require('assert');
 const Hyperion = require('./../index');
 const path = require('path');
