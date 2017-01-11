@@ -13,10 +13,19 @@ describe('Test Hyperion', function () {
             this.hyperion = new Hyperion("191.167.0.1", "1234");
         });
 
-        it('getOn should return Backlight status', function (done) {
+        it('getOn should return timeout', function (done) {
             this.hyperion.getOn((error, response) => {
                 assert.equal(error, "timeout");
-                assert.equal(response, false, "should return the current power status");
+                assert.equal(response, false, "should return timeout if not reachable");
+                console.log("Response: " + response);
+                done();
+            });
+        });
+
+        it('getBrightness should return timeout', function (done) {
+            this.hyperion.getBrightness((error, response) => {
+                assert.equal(error, "timeout");
+                assert.equal(response, 100, "should return timeout if not reachable");
                 console.log("Response: " + response);
                 done();
             });

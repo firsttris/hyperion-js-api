@@ -91,7 +91,7 @@ class Hyperion {
     }
 
     extractColorFromData (data) {
-        if (this.lightState) {
+        if (this.lightState && data && data.info.activeLedColor) {
             this.selectedColor = this.color.rgb(data.info.activeLedColor[0]["RGB Value"]);
         }
     }
