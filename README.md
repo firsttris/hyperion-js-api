@@ -52,5 +52,4 @@ mocha test/hyperion.spec.js -g "setOff should switch off"
 ```
 
 ## License
-
-[MIT](http://opensource.org/licenses/MIT)
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
