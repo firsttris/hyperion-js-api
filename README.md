@@ -51,5 +51,8 @@ run a single test from commandline with:
 mocha test/hyperion.spec.js -g "setOff should switch off"
 ```
 
+## Donate
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KEAR9ZC228YCL)
+
 ## License
 See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
